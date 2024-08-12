@@ -1,5 +1,7 @@
 // const socket = io('http://localhost:8000');
-const socket = io('https://node-server-five-pearl.vercel.app/');
+const socket = io(`${window.location.protocol}//${window.location.host}`);
+
+console.log(socket);
 
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
