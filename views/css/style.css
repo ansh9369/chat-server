@@ -1,6 +1,8 @@
 body {
-    background-image: linear-gradient(rgb(158, 156, 156), rgb(228, 228, 228));
+    background-image: linear-gradient(rgba(0, 0, 0, 0.993), rgb(0, 0, 0));
     height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .logo {
@@ -15,10 +17,9 @@ h1{
     font-size: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    color: white;
+    color: rgb(255, 255, 255);
 
 }
-
 
 .container {
     max-width: 955px;
@@ -67,20 +68,44 @@ h1{
 
 #messageInp{
     width: 80%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     height: 34px;
     font-size: 22px;
-    background-color: black;
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 
 }
 
 .btn{
     cursor: pointer;
-    border: 2px solid black;
-    border-radius: 6px;
+    /* border: 2px solid black; */
+    /* border-radius: 6px; */
     height: 34px;
     width: 8%;
     margin: 0 5px;
+    background: white;
+}
+
+.name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+#send-container {
+    display: flex;
+    align-items: center;
+}
+
+#fileSendButton {
     background: none;
+    border: none;
+    margin-right: 8px; /* Adjust the space between file button and input */
+    cursor: pointer;
+}
+
+#fileSendButton img {
+    display: block; /* Ensures image is centered in the button */
 }
