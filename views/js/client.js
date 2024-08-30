@@ -96,6 +96,7 @@ const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
 const messageContainer = document.querySelector(".container");
 const username = document.getElementById("user");
+const userRoomId = document.getElementById("roomId");
 // var audio = new Audio('tone.mp3');
 var audio = new Audio('tone.mp3');
 
@@ -129,6 +130,10 @@ sessionStorage.setItem("roomId", roomId);
 
 const sessionData = sessionStorage.getItem("name");
 username.innerText = sessionData;
+ const sessionDatau = sessionStorage.getItem("roomId");
+ userRoomId.innerText = sessionDatau;
+
+ userRoomId.textContent += " is your Room ID";
 
 socket.on('user-joined', (name) => {
     append(`${name} joined the chat`, 'left');
@@ -148,3 +153,5 @@ socket.on('left', (name) => {
 function scrollToBottom(){
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
+
+
