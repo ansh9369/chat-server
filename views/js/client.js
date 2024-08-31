@@ -98,7 +98,7 @@ const messageContainer = document.querySelector(".container");
 const username = document.getElementById("user");
 const userRoomId = document.getElementById("roomId");
 
-// var audio = new Audio('tone.mp3');
+var audio = new Audio('tone.mp3');
 
 const append = (message, position) => {
     const messageElement = document.createElement('div');
@@ -120,7 +120,7 @@ form.addEventListener('submit', (e) => {
     messageInput.value = '';
 });
 
-// const name = prompt("Enter your name to join");
+const name = prompt("Enter your name to join");
 // const roomId = prompt("Enter the room ID or channel name to join");
 
 const params = new URLSearchParams(window.location.search);
