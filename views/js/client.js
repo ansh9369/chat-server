@@ -121,7 +121,16 @@ form.addEventListener('submit', (e) => {
 });
 
 const name = prompt("Enter your name to join");
-const roomId = prompt("Enter the room ID or channel name to join");
+// const roomId = prompt("Enter the room ID or channel name to join");
+
+const params = new URLSearchParams(window.location.search);
+
+const x = params.forEach((value, key) => {
+    console.log(`${key}: ${value}`);
+    roomId = key;
+});
+
+
 
 socket.emit('join-room', roomId, name);  // Join a specific room with a room ID and username
 
@@ -133,7 +142,8 @@ username.innerText = sessionData;
  const sessionDatau = sessionStorage.getItem("roomId");
  userRoomId.innerText = sessionDatau;
 
- userRoomId.textContent += " is your Room ID";
+//  userRoomId.textContent += " is your Room ID";
+ userRoomId.innerText = `(${sessionDatau})-Room ID`;
 
 socket.on('user-joined', (name) => {
     append(`${name} joined the chat`, 'left');
