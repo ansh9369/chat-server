@@ -104,6 +104,7 @@ const append = (message, position) => {
     const messageElement = document.createElement('div');
     messageElement.innerText = message;
     messageElement.classList.add('message');
+    messageElement.classList.add('text-wrap');
     messageElement.classList.add(position);
     messageContainer.append(messageElement);
     scrollToBottom();
