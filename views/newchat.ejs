@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Chat Room</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Full-screen video background styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.8); /* Optional: Adds a semi-transparent background for readability */
+            padding: 20px;
+            border-radius: 8px;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            /* padding: 0; */
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="papaya.mp4" type="video/mp4"> <!-- Replace with your video file path -->
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+        <h1 class="text-center mt-5">Create a New Chat Room</h1>
+        <form id="create-room-form" class="mt-4">
+            <div class="form-group mb-3">
+                <label for="roomName">Enter Room Name or ID:</label>
+                <input type="text" id="roomName" class="form-control" placeholder="e.g., chat123" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Create / Join Room</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('create-room-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const roomName = document.getElementById('roomName').value.trim();
+            if (roomName) {
+                window.location.href = `/?${roomName}`; // Redirect to the chat room
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

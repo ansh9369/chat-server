@@ -209,7 +209,18 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/views'));
 
+// Route for the root URL
 app.get('/', (req, res) => {
+    // Check if there are any query parameters
+    if (Object.keys(req.query).length === 0) {
+        res.render("newchat"); // No query parameters
+    } else {
+        res.render('index'); // Has query parameters
+    }
+});
+
+// Wildcard route to match any path with a parameter
+app.get('/*', (req, res) => {
     res.render('index');
 });
 
