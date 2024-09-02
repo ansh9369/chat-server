@@ -86,6 +86,8 @@
 
 
 
+
+
 //////////ClientUpdate0.2//////////////////////
 
 const socket = io(`${window.location.protocol}//${window.location.host}`);
@@ -100,12 +102,16 @@ const userRoomId = document.getElementById("roomId");
 
 var audio = new Audio('tone.mp3');
 
-const append = (message, position) => {
+const append = (message, position, isHtml = false) => {
     const messageElement = document.createElement('div');
-    messageElement.innerText = message;
-    messageElement.classList.add('message');
-    messageElement.classList.add('text-wrap');
-    messageElement.classList.add(position);
+
+    if (isHtml) {
+        messageElement.innerHTML = message;
+    } else {
+        messageElement.innerText = message;
+    }
+
+    messageElement.classList.add('message', 'text-wrap', position);
     messageContainer.append(messageElement);
     scrollToBottom();
     if (position === 'left') {
@@ -115,23 +121,28 @@ const append = (message, position) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const message = messageInput.value;
-    append(`You: ${message}`, 'right');
+    const message = messageInput.value.trim(); // Trim whitespace
+
+    // Check if the message is not empty
+    if (message === '') {
+        return; // Do nothing if the message is blank
+    }
+
+    append(`<span style="color: purple; font-weight: bold;">You</span>: ${message}`, 'right', true);  // Use HTML to color "You"
     socket.emit('send', message);
-    messageInput.value = '';
+    messageInput.value = ''; // Clear the input field
 });
 
+
+
 const name = prompt("Enter your name to join");
-// const roomId = prompt("Enter the room ID or channel name to join");
 
 const params = new URLSearchParams(window.location.search);
 
-const x = params.forEach((value, key) => {
+params.forEach((value, key) => {
     console.log(`${key}: ${value}`);
     roomId = key;
 });
-
-
 
 socket.emit('join-room', roomId, name);  // Join a specific room with a room ID and username
 
@@ -140,29 +151,36 @@ sessionStorage.setItem("roomId", roomId);
 
 const sessionData = sessionStorage.getItem("name");
 username.innerText = sessionData;
- const sessionDatau = sessionStorage.getItem("roomId");
- userRoomId.innerText = sessionDatau;
+const sessionDatau = sessionStorage.getItem("roomId");
+userRoomId.innerText = `(Room ID-${sessionDatau})`;
 
-//  userRoomId.textContent += " is your Room ID";
- userRoomId.innerText = `(Room ID-${sessionDatau})`;
 
 socket.on('user-joined', (name) => {
-    append(`${name} joined the chat`, 'left');
+    // Display join message with the whole message in green
+    const joinMessage = `<span style="color: green; font-weight: bold;">${name} joined the chat </span>`;
+    append(joinMessage, 'left', true);  // Treat as HTML
     scrollToBottom();
 });
 
 socket.on('receive', (data) => {
-    append(`${data.name}: ${data.message}`, 'left');
+    // Receiver's message with username in blue
+    const formattedMessage = `<span style="color: blue; font-weight: bold;">${data.name}</span>: ${data.message}`;
+    append(formattedMessage, 'left', true);  // Treat as HTML
     scrollToBottom();
 });
 
 socket.on('left', (name) => {
-    append(`${name} left the chat`, 'left');
+    // Display leave message with username in green
+    const leftMessage = `<span style="color: green; font-weight: bold;">${name} left the chat </span>`;
+    append(leftMessage, 'left', true);  // Treat as HTML
     scrollToBottom();
 });
 
-function scrollToBottom(){
+function scrollToBottom() {
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
+
+/////////////////////////////////////////
+
 
 
