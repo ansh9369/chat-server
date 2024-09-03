@@ -17,9 +17,9 @@
 
 <body>
     <!-- Sidebar toggle button -->
-    <div class="toggle-sidebar">☰</div>
-
+    
  <!-- Sidebar -->
+
 <div class="sidebar">
     <h3>Settings</h3>
     <label>
@@ -45,17 +45,31 @@
 
     </div> -->
 </div>
+<!-- <hr class="mb-3"> -->
+<div class="row bg-dark menubar" >
+    <nav class="d-flex align-items-center">
+        <div class="toggle-sidebar">☰</div>
+        
+        <div class="name">
+            <ul>
+                <li>  <h4>Welcome,</h4></li>
 
-    <div class="container w-80">
-        <div class="row">
-            <nav>
-                <div class="name">
-                    <h4>Welcome,</h4>
-                    <h4 id="user"></h4>
-                    <h5 id="roomId"></h5>
-                </div>
-            </nav>
+                <li><h4 id="user"></h4></li>
+
+                <li><h5 id="roomId"></h5></li>
+            </ul>
+           
+            
+           
         </div>
+    </nav>
+</div>
+    <div class="container ">
+
+        
+        <!-- <div class="row menubar m-3 ">
+          
+        </div> -->
         <div class="row">
             <div class="chatbox">
                 <!-- Chat messages will appear here -->
@@ -111,7 +125,6 @@
         //         alert('Join/Leave notifications disabled.');
         //     }
         // });
-   
    
    </script>
 

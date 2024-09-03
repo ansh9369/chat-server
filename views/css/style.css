@@ -1,25 +1,24 @@
 body {
-
     background: #20201d;
     color: #a6a28c;
-    height: 100vh;
+    height: 95vh;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .container {
-    overflow-y: scroll;
-    /* Enable scrolling */
-    padding-bottom: 50px;
+    overflow-y: scroll; /* Enable scrolling */
+    padding: 50px;
     width: 40%;
+    max-width: 100%;
+    /* margin: auto; Center the container */
 }
 
-/* Hide scrollbar for modern browsers */
 .container::-webkit-scrollbar {
-    display: none;
-    /* Safari and Chrome */
+    display: none; /* Hide scrollbar for Safari and Chrome */
 }
 
 .container {
@@ -29,44 +28,48 @@ body {
     /* Firefox */
 }
 
-
-h4 {
-    margin-top: 12px;
+li{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+ul{
+    /* align-items: center; */
+    list-style: none; display: flex; justify-content: center;
+}
+h4, h5 {
+    /* margin-top: 12px; */
     font-size: 18px;
-    display: flex;
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-family: "Gill Sans Extrabold", sans-serif;
-    text-align: center;
+    /* text-align: center; */
     color: rgb(255, 255, 255);
+    /* display: flex; */
+   
 }
 
-h3,
-h3 {
+nav{
+    align-items: center;
+}
+
+h3, h3 {
     font-size: calc(1.3rem + .6vw);
     padding-left: 30px;
 }
 
-h5 {
-    margin-top: 12px;
-    font-size: 18px;
-    display: table-caption;
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-    font-family: "Gill Sans Extrabold", sans-serif;
-    text-align: center;
-    color: rgb(255, 255, 255);
-}
-
 .name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
+    width: auto;
     font-family: "Gill Sans Extrabold", sans-serif;
-    gap: 6px;
+    /* gap: 6px; */
+   
 }
-
+.menubar{
+    background-color: #20201d;
+    height: 8vh;
+    /* position: fixed; */
+    /* display: flex;
+    justify-content: space-between; */
+}
 .chat-box {
-
     background: #20201d;
     color: #a6a28c;
     height: 60vh;
@@ -79,20 +82,15 @@ h5 {
 
 
 .message {
-    /* background-color: rgb(255, 255, 255); */
-
     background: #20201d;
     color: #a6a28c;
-
-    text-wrap: wrap;
-    /* width: 80%; */
-    /* color: #020202; */
     padding: 5px;
-    margin: 2px 2px;
-    /* border: 2px solid black; */
+    margin: 2px;
     border-radius: 20px 10px 20px 10px;
     font-family: 'DejaVu Sans Mono', monospace;
     font-size: 12px;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 
@@ -147,173 +145,8 @@ form {
 
 
 
-
-
-@media only screen and (max-width: 768px) {
-    h1 {
-        font-size: 24px;
-    }
-
-    #messageInp {
-        width: 70%;
-        font-size: 18px;
-    }
-
-    .btn {
-        width: 20%;
-        height: 34px;
-        padding: 0 10px;
-    }
-
-    .container {
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    #messageInp {
-        width: 60%;
-        font-size: 16px;
-    }
-
-    .btn {
-        width: 30%;
-        height: 34px;
-        padding: 0 5px;
-    }
-
-    .container {
-        width: 100%;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-/* ////////////////////////////////////////////////// */
-
-body {
-    background: #20201d;
-    color: #a6a28c;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.container {
-    overflow-y: scroll;
-    /* Enable scrolling */
-    padding-bottom: 50px;
-    width: 40%;
-}
-
-/* Hide scrollbar for modern browsers */
-.container::-webkit-scrollbar {
-    display: none;
-    /* Safari and Chrome */
-}
-
-.container {
-    -ms-overflow-style: none;
-    /* Internet Explorer 10+ */
-    scrollbar-width: none;
-    /* Firefox */
-}
-
-h4 {
-    margin-top: 12px;
-    font-size: 18px;
-    display: flex;
-    font-family: "Gill Sans Extrabold", sans-serif;
-    text-align: center;
-    color: rgb(255, 255, 255);
-}
-
-h5 {
-    margin-top: 12px;
-    font-size: 18px;
-    display: table-caption;
-    font-family: "Gill Sans Extrabold", sans-serif;
-    text-align: center;
-    color: rgb(255, 255, 255);
-}
-
-.name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: "Gill Sans Extrabold", sans-serif;
-    gap: 6px;
-}
-
 #roomId {
     color: rgb(216, 132, 37);
-}
-
-.chat-box {
-    background: #20201d;
-    color: #a6a28c;
-    height: 60vh;
-    padding: 20px;
-    overflow-y: auto;
-    margin-bottom: 23px;
-    border-radius: 13px;
-    flex-grow: 0;
-}
-
-.message {
-    background: #20201d;
-    color: #a6a28c;
-    text-wrap: wrap;
-    padding: 5px;
-    margin: 2px 2px;
-    border-radius: 20px 10px 20px 10px;
-    font-family: 'DejaVu Sans Mono', monospace;
-    font-size: 12px;
-    tab-size: 4;
-}
-
-.left {
-    float: left;
-    clear: both;
-    max-width: 280px;
-    text-wrap: wrap;
-    word-wrap: break-word;
-}
-
-.right {
-    float: right;
-    clear: both;
-    max-width: 280px;
-    text-wrap: wrap;
-    word-wrap: break-word;
-}
-
-.send {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #20201d;
-    color: #a6a28c;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-color: rgb(255, 255, 255);
 }
 
 #send-container {
@@ -325,11 +158,6 @@ h5 {
     border-top: 1px solid;
 }
 
-form {
-    display: block;
-    margin-top: 0em;
-    unicode-bidi: isolate;
-}
 
 /* Sidebar styling */
 .sidebar {
@@ -349,7 +177,7 @@ form {
 
 .sidebar.active {
     display: flex;
-    /* Show when active */
+  
 }
 
 .sidebar h3 {
@@ -363,46 +191,70 @@ form {
 }
 
 .toggle-sidebar {
-    position: fixed;
+    /* position: fixed; */
+    /* display: block; */
+    margin-left: 20px;
     left: 10px;
     top: 10px;
-    z-index: 1001;
+    /* z-index: 1001; */
     cursor: pointer;
-    font-size: 24px;
+    /* font-size: 24px; */
     background-color: #333;
     color: white;
-    padding: 10px;
+    padding: 8px;
     border-radius: 5px;
 }
 
-/* Online users list styling */
-/* .online-users {
-    margin-top: 20px;
+
+
+#messageInp, textarea {
+    width: 100%;
+    font-size: 22px;
+    background: none;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 5px;
+    color: rgb(182, 176, 176);
 }
 
-.online-users button {
-    margin-top: 5px;
-} */
+#messageInp {
+    overflow: auto;
+    /* Allows scrolling */
+    scrollbar-width: none;
+    /* For Firefox */
+}
+
+#messageInp::-webkit-scrollbar {
+    display: none;
+    /* Hides scrollbar */
+}
+
+.chatbox{
+    margin-top: 50px;
+}
 
 /* Responsive styles */
 @media only screen and (max-width: 768px) {
-    h1 {
-        font-size: 24px;
+    .container {
+        width: 90%;
+    }
+
+    .chatbox{
+        margin-top: 18px;
+    }
+    .menubar{
+        background-color: #20201d;
+        /* position: fixed; */
+        height: 15vh;
+    }
+    .left, .right {
+        max-width: 70%; /* Adjust the max width for smaller devices */
+        padding-top: 35px;
     }
 
     #messageInp {
-        width: 70%;
         font-size: 18px;
-    }
-
-    .btn {
-        width: 20%;
-        height: 34px;
-        padding: 0 10px;
-    }
-
-    .container {
-        width: 100%;
     }
 
     .sidebar {
@@ -410,50 +262,45 @@ form {
     }
 }
 
+
+
 @media only screen and (max-width: 480px) {
-    h1 {
-        font-size: 20px;
+    .container {
+        width: 100%;
+        padding: 0 10px; /* Add some padding on small screens */
+    }
+
+    .left, .right {
+        max-width: 70%; /* Full width on very small devices */
+        padding-top: 35px;
     }
 
     #messageInp {
-        width: 60%;
+        width: 100%;
         font-size: 16px;
     }
 
-    .btn {
-        width: 30%;
-        height: 34px;
-        padding: 0 5px;
+    .send {
+        flex-direction: column; /* Stack input and send button */
+        align-items: flex-start; /* Align input to start */
     }
 
-    .container {
+    .sidebar {
+        width: 180px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    #send-container{
         width: 100%;
     }
 }
 
-#messageInp,
-textarea {
-    width: 100%;
-    font-size: 22px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(182, 176, 176);
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #000000;
-    /* margin-right: 140px; */
 
-    background: none;
-    border: none;
-    outline: none;
-    resize: none;
-}
 
-#messageInp {
-    overflow: auto; /* Allows scrolling */
-    scrollbar-width: none; /* For Firefox */
-}
 
-/* For Chrome, Safari, and Edge */
-#messageInp::-webkit-scrollbar {
-    display: none; /* Hides scrollbar */
+ul {
+    padding: 0 !important;
+    margin: 0 !important;
+    justify-content: center !important;
 }
