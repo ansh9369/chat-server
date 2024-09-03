@@ -35,6 +35,10 @@ body {
     text-align: center;
     color: rgb(255, 255, 255);
 }
+h3, h3 {
+    font-size: calc(1.3rem + .6vw);
+    padding-left: 30px;
+}
 
 h5{
     margin-top: 12px;
