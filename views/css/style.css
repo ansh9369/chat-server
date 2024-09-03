@@ -447,3 +447,13 @@ textarea {
     outline: none;
     resize: none;
 }
+
+#messageInp {
+    overflow: auto; /* Allows scrolling */
+    scrollbar-width: none; /* For Firefox */
+}
+
+/* For Chrome, Safari, and Edge */
+#messageInp::-webkit-scrollbar {
+    display: none; /* Hides scrollbar */
+}
