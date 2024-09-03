@@ -1,95 +1,3 @@
-// // const socket = io('http://localhost:8000');
-// const socket = io(`${window.location.protocol}//${window.location.host}`);
-
-// console.log(socket);
-
-// const form = document.getElementById('send-container');
-// const messageInput = document.getElementById('messageInp');
-// const messageContainer = document.querySelector(".container");
-// const username = document.getElementById("user");
-// // let element = document.querySelector('feedback');
-// // var audio = new Audio('tone.mp3');
-// var audio = new Audio('tone.mp3')
-
-// const append = (message, position) => {
-//     const messageElement = document.createElement('div');
-//     messageElement.innerText = message;
-//     messageElement.classList.add('message');
-//     messageElement.classList.add(position);
-//     messageContainer.append(messageElement);
-//     scrollToBottom()
-//     if (position == 'left') {
-//         audio.play();
-//     }
-// };
-
-// // messageInput.addEventListener('focus', (e)=> {
-// //     socket.emit('feedback',{
-// //         feedback: `${name.value} is typing a message`,
-// //     })
-// // })
-// // messageInput.addEventListener('keypress', (e)=>{
-// //     socket.emit('feedback',{
-// //         feedback: `${name.value} is typing a message`,
-// //     })
-// // })
-// // messageInput.addEventListener('blur', (e)=>{
-// //     socket.emit('feedback',{
-// //         feedback: '',
-// //     })
-// // })
-
-
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     const message = messageInput.value;
-//     append(`You: ${message}`, 'right');
-//     socket.emit('send', message);
-//     messageInput.value = ''
-// });
-
-// const name = prompt("Enter your name to join");
-// socket.emit('new-user-joined', name);
-
-// sessionStorage.setItem("name", name);
-
-// const sessionData = sessionStorage.getItem("name");
-
-// username.innerText = sessionData;
-
-// socket.on('user-joined', name => {
-//     append(`${name} joined the chat`, 'left');
-//     scrollToBottom()
-// })
-// socket.on('receive', data => {
-//     append(`${data.name}: ${data.message}`, 'left');
-//     scrollToBottom()
-// })
-// socket.on('left', name => {
-//     append(`${name} left the chat`, 'left');
-//     scrollToBottom()
-// })
-// // socket.on('feedback', (data) =>{
-// //     let element = `
-// //             <li class="message-feedback">
-// //             <p class="feedback", id="feedback">${data.feedback}</p>
-// //         </li> 
-// //     `
-// //     messageContainer.innerHTML += element
-// // })
-
-// function scrollToBottom(){
-//     messageContainer.scrollTop = messageContainer.scrollHeight
-// }
-
-
-
-
-
-
-
-//////////ClientUpdate0.2//////////////////////
-
 const socket = io(`${window.location.protocol}//${window.location.host}`);
 
 console.log(socket);
@@ -100,8 +8,28 @@ const messageContainer = document.querySelector(".container");
 const username = document.getElementById("user");
 const userRoomId = document.getElementById("roomId");
 
-var audio = new Audio('tone.mp3');
+// Sidebar elements
+const soundNotificationCheckbox = document.getElementById('soundNotification');
+const screenNotificationCheckbox = document.getElementById('screenNotification');
+const joinLeaveNotificationCheckbox = document.getElementById('joinLeaveNotification');
 
+// Load saved notification preferences from localStorage
+const loadPreferences = () => {
+    soundNotificationCheckbox.checked = JSON.parse(localStorage.getItem('soundNotification') || 'true');
+    screenNotificationCheckbox.checked = JSON.parse(localStorage.getItem('screenNotification') || 'true');
+    joinLeaveNotificationCheckbox.checked = JSON.parse(localStorage.getItem('joinLeaveNotification') || 'true');
+};
+
+// Save notification preferences to localStorage
+const savePreferences = () => {
+    localStorage.setItem('soundNotification', JSON.stringify(soundNotificationCheckbox.checked));
+    localStorage.setItem('screenNotification', JSON.stringify(screenNotificationCheckbox.checked));
+    localStorage.setItem('joinLeaveNotification', JSON.stringify(joinLeaveNotificationCheckbox.checked));
+};
+
+var audio = new Audio('pop.mp3');
+
+// Function to append messages
 const append = (message, position, isHtml = false) => {
     const messageElement = document.createElement('div');
 
@@ -114,37 +42,37 @@ const append = (message, position, isHtml = false) => {
     messageElement.classList.add('message', 'text-wrap', position);
     messageContainer.append(messageElement);
     scrollToBottom();
-    if (position === 'left') {
+
+    if (position === 'left' && soundNotificationCheckbox.checked) {
         audio.play();
+    }
+
+    if (position === 'left' && screenNotificationCheckbox.checked) {
+        document.title = "New Message!";
+        setTimeout(() => { document.title = "ChatBox"; }, 2000);
     }
 };
 
+// Event listener for form submission
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const message = messageInput.value.trim(); // Trim whitespace
+    const message = messageInput.value.trim();
 
-    // Check if the message is not empty
-    if (message === '') {
-        return; // Do nothing if the message is blank
-    }
+    if (message === '') return;
 
-    append(`<span style="color: purple; font-weight: bold;">You</span>: ${message}`, 'right', true);  // Use HTML to color "You"
+    append(`<span style="color: purple; font-weight: bold;">You</span>: ${message}`, 'right', true);
     socket.emit('send', message);
-    messageInput.value = ''; // Clear the input field
+    messageInput.value = '';
 });
 
-
-
+// Prompt user for their name and join room
 const name = prompt("Enter your name to join");
-
 const params = new URLSearchParams(window.location.search);
-
 params.forEach((value, key) => {
     console.log(`${key}: ${value}`);
     roomId = key;
 });
-
-socket.emit('join-room', roomId, name);  // Join a specific room with a room ID and username
+socket.emit('join-room', roomId, name);
 
 sessionStorage.setItem("name", name);
 sessionStorage.setItem("roomId", roomId);
@@ -154,25 +82,28 @@ username.innerText = sessionData;
 const sessionDatau = sessionStorage.getItem("roomId");
 userRoomId.innerText = `(Room ID-${sessionDatau})`;
 
-
+// Socket event listeners
 socket.on('user-joined', (name) => {
-    // Display join message with the whole message in green
-    const joinMessage = `<span style="color: green; font-weight: bold;">${name} joined the chat </span>`;
-    append(joinMessage, 'left', true);  // Treat as HTML
+    const joinMessage = `<span style="color: green; font-weight: bold;">*${name} joined the chat </span>`;
+    append(joinMessage, 'left', true);
+    if (joinLeaveNotificationCheckbox.checked) {
+        alert(`${name} has joined the chat.`);
+    }
     scrollToBottom();
 });
 
 socket.on('receive', (data) => {
-    // Receiver's message with username in blue
-    const formattedMessage = `<span style="color: blue; font-weight: bold;">${data.name}</span>: ${data.message}`;
-    append(formattedMessage, 'left', true);  // Treat as HTML
+    const formattedMessage = `<span style="color: skyblue; font-weight: bold;">${data.name}</span>: ${data.message}`;
+    append(formattedMessage, 'left', true);
     scrollToBottom();
 });
 
 socket.on('left', (name) => {
-    // Display leave message with username in green
     const leftMessage = `<span style="color: green; font-weight: bold;">${name} left the chat </span>`;
-    append(leftMessage, 'left', true);  // Treat as HTML
+    append(leftMessage, 'left', true);
+    if (joinLeaveNotificationCheckbox.checked) {
+        alert(`${name} has left the chat.`);
+    }
     scrollToBottom();
 });
 
@@ -180,7 +111,10 @@ function scrollToBottom() {
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
-/////////////////////////////////////////
+// Load preferences when page loads
+loadPreferences();
 
-
-
+// Save preferences when any checkbox is toggled
+soundNotificationCheckbox.addEventListener('change', savePreferences);
+screenNotificationCheckbox.addEventListener('change', savePreferences);
+joinLeaveNotificationCheckbox.addEventListener('change', savePreferences);
