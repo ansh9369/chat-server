@@ -8,6 +8,27 @@ const messageContainer = document.querySelector(".container");
 const username = document.getElementById("user");
 const userRoomId = document.getElementById("roomId");
 
+const messageTextarea = document.getElementById('messageInp');
+
+const adjustHeight = () => {
+    messageTextarea.style.height = '34px'; // Reset height to auto
+    const newHeight = Math.min(messageTextarea.scrollHeight, 150); // Set new height based on content, with a max of 300px
+    messageTextarea.style.height = `${newHeight}px`; // Apply the calculated height
+};
+
+messageTextarea.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) { // Check if Enter is pressed and Shift is not held
+        e.preventDefault(); // Prevent default action (new line)
+        form.dispatchEvent(new Event('submit')); // Trigger form submission
+    }
+});
+
+// Add event listener for input events
+messageTextarea.addEventListener('input', adjustHeight);
+adjustHeight();
+
+// Initialize height on page load
+
 // Sidebar elements
 const soundNotificationCheckbox = document.getElementById('soundNotification');
 const screenNotificationCheckbox = document.getElementById('screenNotification');
@@ -63,10 +84,25 @@ form.addEventListener('submit', (e) => {
     append(`<span style="color: purple; font-weight: bold;">You</span>: ${message}`, 'right', true);
     socket.emit('send', message);
     messageInput.value = '';
+    adjustHeight();
 });
 
 // Prompt user for their name and join room
-const name = prompt("Enter your name to join");
+// const name = prompt("Enter your name to join");
+
+
+// Prompt user for their name and join room with validation
+let name = '';
+
+while (!name) {
+    name = prompt("Enter your name to join").trim();
+    if (!name) {
+        alert("Name cannot be blank. Please enter your name.");
+    }
+}
+
+
+
 const params = new URLSearchParams(window.location.search);
 params.forEach((value, key) => {
     console.log(`${key}: ${value}`);

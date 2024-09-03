@@ -10,23 +10,27 @@ body {
 }
 
 .container {
-    overflow-y: scroll; /* Enable scrolling */
+    overflow-y: scroll;
+    /* Enable scrolling */
     padding-bottom: 50px;
     width: 40%;
 }
 
 /* Hide scrollbar for modern browsers */
 .container::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none;
+    /* Safari and Chrome */
 }
 
 .container {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 
- h4{
+h4 {
     margin-top: 12px;
     font-size: 18px;
     display: flex;
@@ -35,15 +39,17 @@ body {
     text-align: center;
     color: rgb(255, 255, 255);
 }
-h3, h3 {
+
+h3,
+h3 {
     font-size: calc(1.3rem + .6vw);
     padding-left: 30px;
 }
 
-h5{
+h5 {
     margin-top: 12px;
     font-size: 18px;
-    display:table-caption;
+    display: table-caption;
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-family: "Gill Sans Extrabold", sans-serif;
     text-align: center;
@@ -77,17 +83,16 @@ h5{
 
     background: #20201d;
     color: #a6a28c;
-   
-   text-wrap: wrap;
+
+    text-wrap: wrap;
     /* width: 80%; */
     /* color: #020202; */
     padding: 5px;
     margin: 2px 2px;
     /* border: 2px solid black; */
-    border-radius:20px 10px 20px 10px;
+    border-radius: 20px 10px 20px 10px;
     font-family: 'DejaVu Sans Mono', monospace;
     font-size: 12px;
-    tab-size: 4;
 }
 
 
@@ -122,30 +127,11 @@ h5{
     border-color: rgb(255, 255, 255);
 }
 
-
-
-#messageInp , textarea{
-    width: 100%;
-    height: 34px;
-    font-size: 22px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(182, 176, 176);
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #000000;
-    /* margin-right: 140px; */
-
-        background: none;
-        border: none;
-        outline: none;
-        resize: none;
-    }
-
-    form {
-        display: block;
-        margin-top: 0em;
-        unicode-bidi: isolate;
-    }
+form {
+    display: block;
+    margin-top: 0em;
+    unicode-bidi: isolate;
+}
 
 /* .btn {
     cursor : pointer;
@@ -172,12 +158,14 @@ h5{
         width: 70%;
         font-size: 18px;
     }
+
     .btn {
         width: 20%;
         height: 34px;
         padding: 0 10px;
     }
-    .container{
+
+    .container {
         width: 100%;
     }
 }
@@ -186,17 +174,19 @@ h5{
     h1 {
         font-size: 20px;
     }
-   
+
     #messageInp {
         width: 60%;
         font-size: 16px;
     }
+
     .btn {
         width: 30%;
         height: 34px;
         padding: 0 5px;
     }
-    .container{
+
+    .container {
         width: 100%;
     }
 }
@@ -223,19 +213,23 @@ body {
 }
 
 .container {
-    overflow-y: scroll; /* Enable scrolling */
+    overflow-y: scroll;
+    /* Enable scrolling */
     padding-bottom: 50px;
     width: 40%;
 }
 
 /* Hide scrollbar for modern browsers */
 .container::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none;
+    /* Safari and Chrome */
 }
 
 .container {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 h4 {
@@ -331,23 +325,6 @@ h5 {
     border-top: 1px solid;
 }
 
-
-#messageInp,
-textarea {
-    width: 100%;
-    height: 34px;
-    font-size: 22px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(182, 176, 176);
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #000000;
-    background: none;
-    border: none;
-    outline: none;
-    resize: none
-}
-
 form {
     display: block;
     margin-top: 0em;
@@ -363,14 +340,16 @@ form {
     height: 100%;
     background-color: #333;
     padding: 20px;
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     flex-direction: column;
     color: white;
     z-index: 1000;
 }
 
 .sidebar.active {
-    display: flex; /* Show when active */
+    display: flex;
+    /* Show when active */
 }
 
 .sidebar h3 {
@@ -450,4 +429,21 @@ form {
     .container {
         width: 100%;
     }
+}
+
+#messageInp,
+textarea {
+    width: 100%;
+    font-size: 22px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(182, 176, 176);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    /* margin-right: 140px; */
+
+    background: none;
+    border: none;
+    outline: none;
+    resize: none;
 }
