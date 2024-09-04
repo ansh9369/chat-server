@@ -302,7 +302,7 @@ form {
     .container {
         width: 100%;
         /* padding: 0 10px; Add some padding on small screens */
-        padding-bottom: 22px;
+        padding-bottom: 40px;
         overflow-x: hidden;
     }
 
