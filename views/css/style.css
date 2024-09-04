@@ -178,7 +178,7 @@ form {
 }
 
 #send-container {
-    width: 38%;
+    width: 32%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -287,6 +287,9 @@ form {
 
     .sidebar {
         width: 200px;
+    }
+    #send-container{
+        width: 60%;
     }
 }
 
