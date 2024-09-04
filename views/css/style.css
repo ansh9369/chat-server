@@ -267,7 +267,7 @@ form {
 @media only screen and (max-width: 768px) {
     .container {
         width: 90%;
-        overflow-y: hidden;
+        overflow-x: hidden;
 
     }
 
@@ -303,7 +303,7 @@ form {
         width: 100%;
         /* padding: 0 10px; Add some padding on small screens */
         padding-bottom: 13px;
-        overflow-y: hidden;
+        overflow-x: hidden;
     }
 
     .left, .right {
