@@ -11,59 +11,50 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
     <style>
-        /* Moved existing styles from index.ejs to style.css */
+    
+    
     </style>
 </head>
 
 <body>
-    <!-- Sidebar toggle button -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+            <div class="toggle-sidebar" type="menu" onclick="openx()">☰</div>
+
+        <div class="sidebar" id="sidebar">
+            <button id="closeButton" type="menu" onclick="closex()">X</button>
+            <h3>Settings</h3>
+
+            <label>
+                <input type="checkbox" id="soundNotification"> Sound Notification
+            </label>
+            <label>
+                <input type="checkbox" id="screenNotification"> Screen Notification
+            </label>
+            <label>
+                <input type="checkbox" id="joinLeaveNotification"> Join/Leave Notification
+            </label>
+
+        </div>
+        <div  class="mx-auto">
+            <div class="name">
+                <ul>
+                    <li>  <h4>Welcome,</h4></li>
+    
+                    <li><h4 id="user"></h4></li>
+    
+                    <li><h5 id="roomId"></h5></li>
+                </ul>
+               
+            </div>
+        </div>
+        </div>
+      </nav>
     
  <!-- Sidebar -->
 
-<div class="sidebar">
-    <h3>Settings</h3>
-    <label>
-        <input type="checkbox" id="soundNotification"> Sound Notification
-    </label>
-    <label>
-        <input type="checkbox" id="screenNotification"> Screen Notification
-    </label>
-    <label>
-        <input type="checkbox" id="joinLeaveNotification"> Join/Leave Notification
-    </label>
-    <!-- <h3>Online Users</h3>
-    <div class="online-users">
-
-        <div>
-            <span>Username1</span>
-            <button class="invite-button">Invite</button>
-        </div>
-        <div>
-            <span>Username2</span>
-            <button class="invite-button">Invite</button>
-        </div>
-
-    </div> -->
-</div>
 <!-- <hr class="mb-3"> -->
-<div class="row bg-dark menubar" >
-    <nav class="d-flex align-items-center">
-        <div class="toggle-sidebar">☰</div>
-        
-        <div class="name">
-            <ul>
-                <li>  <h4>Welcome,</h4></li>
 
-                <li><h4 id="user"></h4></li>
-
-                <li><h5 id="roomId"></h5></li>
-            </ul>
-           
-            
-           
-        </div>
-    </nav>
-</div>
     <div class="container ">
 
         
@@ -83,6 +74,14 @@
     </div>
 
     <script>
+         function closex(){
+            // alert('hello')
+            document.getElementById('sidebar').style.display='none';
+        }
+        function openx(){
+            document.getElementById('sidebar').style.display='block';
+
+        }
         // JavaScript to toggle the sidebar
         const sidebar = document.querySelector('.sidebar');
         const toggleSidebar = document.querySelector('.toggle-sidebar');
@@ -90,6 +89,7 @@
         toggleSidebar.addEventListener('click', () => {
             sidebar.classList.toggle('active');
         });
+
 
         // Event listener for online user invite button
         // document.querySelectorAll('.invite-button').forEach(button => {

@@ -8,6 +8,14 @@ body {
     flex-direction: column;
     overflow: hidden;
 }
+.d-flex{
+    align-items: center;
+    /* background-color: red; */
+    border: 2px solid red;
+}
+nav{
+    justify-content: center;
+}
 
 .container {
     overflow-y: scroll; /* Enable scrolling */
@@ -28,14 +36,26 @@ body {
     /* Firefox */
 }
 
-li{
-    margin-left: 5px;
-    margin-right: 5px;
+li {
+    /* margin: 0; */
+
 }
-ul{
-    /* align-items: center; */
-    list-style: none; display: flex; justify-content: center;
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
 }
+
+#closeButton{
+    /* justify-content: right; */
+    align-items: right;
+    background-color: red;
+}
+
 h4, h5 {
     /* margin-top: 12px; */
     font-size: 18px;
@@ -46,28 +66,27 @@ h4, h5 {
    
 }
 
-nav{
-    align-items: center;
-}
-
 h3, h3 {
     font-size: calc(1.3rem + .6vw);
     padding-left: 30px;
 }
 
 .name {
-    text-align: center;
-    width: auto;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center; /* Center text within the container */
     font-family: "Gill Sans Extrabold", sans-serif;
-    /* gap: 6px; */
-   
+    color: rgb(255, 255, 255);
 }
+
+
 .menubar{
     background-color: #20201d;
     height: 8vh;
+    display: flex;
     /* position: fixed; */
-    /* display: flex;
-    justify-content: space-between; */
+    /* justify-content: center;
+    align-items: center; */
 }
 .chat-box {
     background: #20201d;
@@ -193,7 +212,7 @@ form {
 .toggle-sidebar {
     /* position: fixed; */
     /* display: block; */
-    margin-left: 20px;
+    margin-left: 0px;
     left: 10px;
     top: 10px;
     /* z-index: 1001; */
@@ -294,13 +313,4 @@ form {
     #send-container{
         width: 100%;
     }
-}
-
-
-
-
-ul {
-    padding: 0 !important;
-    margin: 0 !important;
-    justify-content: center !important;
 }
