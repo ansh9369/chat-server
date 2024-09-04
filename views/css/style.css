@@ -187,6 +187,7 @@ form {
 }
 
 
+
 /* Sidebar styling */
 .sidebar {
     position: fixed;
@@ -266,6 +267,8 @@ form {
 @media only screen and (max-width: 768px) {
     .container {
         width: 90%;
+        overflow-y: hidden;
+
     }
 
     .chatbox{
@@ -298,7 +301,9 @@ form {
 @media only screen and (max-width: 480px) {
     .container {
         width: 100%;
-        padding: 0 10px; /* Add some padding on small screens */
+        /* padding: 0 10px; Add some padding on small screens */
+        padding-bottom: 13px;
+        overflow-y: hidden;
     }
 
     .left, .right {
