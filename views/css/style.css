@@ -309,7 +309,7 @@ form {
     .left, .right {
         max-width: 70%; /* Full width on very small devices */
         padding-top: 35px;
-        padding-bottom: 25px;
+        padding-bottom: 32px;
     }
 
     #messageInp {
