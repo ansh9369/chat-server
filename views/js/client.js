@@ -92,7 +92,7 @@ form.addEventListener('submit', (e) => {
 
 
 // Prompt user for their name and join room with validation
-// let name = '';
+let name = '';
 
 while (!name) {
     name = prompt("Enter your name to join").trim();
