@@ -147,6 +147,8 @@ function scrollToBottom() {
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
+
+
 // Load preferences when page loads
 loadPreferences();
 
