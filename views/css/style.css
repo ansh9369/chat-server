@@ -311,6 +311,7 @@ form {
     top: 20px;
     right: 20px;
     text-align: right;
+    /* padding: 5px; */
     color: #a6a28c;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
     z-index: 1000; /* Ensures it stays above other elements */
@@ -359,18 +360,20 @@ form {
 
     .designed-by p {
         font-size: 10px;
+        display: none;
     }
 }
 
 @media (max-width: 400px) {
     .designed-by {
-        top: 5px;
+        top: 2px;
         right: 5px;
         font-size: 9px;
     }
 
     .designed-by p {
         font-size: 9px;
+        display: none;
     }
 }
 

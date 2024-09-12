@@ -87,6 +87,7 @@ form.addEventListener('submit', (e) => {
     adjustHeight();
 });
 
+
 // Prompt user for their name and join room
 // const name = prompt("Enter your name to join");
 
@@ -147,6 +148,12 @@ function scrollToBottom() {
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
+document.getElementById('messageInput').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent the default action (e.g., form submission)
+        this.blur(); // Remove focus from the input field to hide the keyboard
+    }
+});
 
 
 // Load preferences when page loads
